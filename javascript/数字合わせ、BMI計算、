@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>memory-sample</title>
+</head>
+<body>
+  <!--神経衰弱ゲーム-->
+  <h1>神経衰弱ゲーム</h1>
+  1:<input id="0" value="1"/>
+  2:<input id="1" value="13"/>
+  <button onclick="start()">check</button>
+  <p><span id="result"></span></p>
+  
+  <!--BMI計算-->
+  <h1>BMIの計算</h1>
+  身長(m):<input id="n0" value="1.7"/>
+  体重(kg): <input id="n1" value="60">
+  <button onclick="bmi()">測定</button>
+  <p><span id="mesureResult"></span>:<span id="judgment"></span></p>
+</body>
+<script>
+  function start(){
+    let a = document.getElementById("0").value;
+    let b = document.getElementById("1").value;
+    if(a === b){
+      document.getElementById("result").textContent = "当たり"
+    }else{
+      document.getElementById("result").textContent = "はずれ"
+    }
+  }
+  function bmi(){
+    let m = document.getElementById("n0").value;
+    let kg = document.getElementById("n1").value;
+
+    let bmi = kg / (m * m);
+
+    document.getElementById("mesureResult").textContent = Math.round(bmi * 10)/10; //math.roundで小数点第一位まで表示
+
+    if(bmi >= 25){
+      document.getElementById("judgment").textContent = "肥満気味です。";
+    }else if(bmi <= 18.5){
+      document.getElementById("judgment").textContent = "痩せ過ぎです。";
+    }else{
+      document.getElementById("judgment").textContent = "標準です。";
+    }
+  }
+</script>
+</html>
