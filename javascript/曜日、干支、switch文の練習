@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>switch-month</title>
+</head>
+<body>
+  <p>今日は<span id="day"></span>曜日</p>
+  <!--干支-->
+  <p><span id="year"></span>年の干支は<span id="eto"></span></p>
+  <button onclick="show()">表示</button>
+</body>
+<script>
+  //曜日
+  window.onload = function(){
+    let str = "";
+    let day = new Date().getDay();
+    switch(day){
+      case 0:
+      str = "日";break;
+      case 1:
+      str = "月";break;
+      case 2:
+      str = "火";break;
+      case 3:
+      str = "水";break;
+      case 4:
+      str = "木";break;
+      case 5:
+      str = "金";break;
+      case 6:
+      str = "土";break;
+    }
+    document.getElementById("day").textContent = str;
+  }
+  //干支
+  function show(){
+    let zikkan = "";
+    let zyunisi = "";
+    let year = new Date().getFullYear();
+    let zikkanYear = year%10;
+    let zyunisiYear = year%12;
+
+    document.getElementById('year').textContent = year
+      switch(zikkanYear){
+      case 0:
+      zikkan = '康';break;
+      case 1:
+      zikkan = '辛';break;
+      case 2:
+      zikkan = '壬';break;
+      case 3:
+      zikkan = '癸';break;
+      case 4:
+      zikkan = '甲';break;
+      case 5:
+      zikkan = '乙';break;
+      case 6:
+      zikkan = '丙';break;
+      case 7:
+      zikkan = '丁';break;
+      case 8:
+      zikkan = '戊';break;
+      case 9:
+      zikkan = '己';break;
+    }
+      switch(zyunisiYear){
+      case 0:
+      zyunisi = '申';break;
+      case 1:
+      zyunisi = '酉';break;
+      case 2:
+      zyunisi = '戌';break;
+      case 3:
+      zyunisi = '亥';break;
+      case 4:
+      zyunisi = '子';break;
+      case 5:
+      zyunisi = '丑';break;
+      case 6:
+      zyunisi = '寅';break;
+      case 7:
+      zyunisi = '卯';break;
+      case 8:
+      zyunisi = '辰';break;
+      case 9:
+      zyunisi = '巳';break;
+      case 10:
+      zyunisi = '午';break;
+      case 11:
+      zyunisi = '未';break;
+    }
+    
+    document.getElementById('eto').textContent = zikkan + zyunisi;
+  }
+</script>
+</html>
