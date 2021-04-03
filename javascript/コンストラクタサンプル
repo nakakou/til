@@ -1,0 +1,55 @@
+#コンストラクタの練習
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>object-constract</title>
+</head>
+<body>
+  <button onclick="selectR()">レッド</button>
+  <button onclick="selectG()">グリーン</button>
+  <button onclick="selectB()">ブルー</button>
+  <button onclick="selectP()">ピンク</button>
+  <button onclick="stroke()">使う</button>
+  <p>ペンの色は<span id="color"></span></p>,
+  長さは<span id="length"></span>cm
+</body>
+<script>
+  //コンストラクタ(たい焼きの金型のようなもの)
+  function Pen(color,length){
+    //プロパティ
+    this.color = color;
+    this.length = length;
+    //メソッド
+    this.draw = function(){
+      this.length -= 0.01;
+    }
+  }
+  //オブジェクトの生成
+  const penR = new Pen("red",5);
+  const penB = new Pen("blue",17);
+  const penG = new Pen("green",25);
+  const penP = new Pen("pink",30);
+  let pen = penR;
+
+  //使うボタンを押したときのアクション
+  function stroke(){
+    pen.draw();
+    document.getElementById("color").textContent = pen.color;
+    document.getElementById("length").textContent = pen.length;
+  }
+  //色の選択をしたら
+  function selectR(){
+    pen = penR;
+  }
+  function selectG(){
+    pen = penG;
+  }
+  function selectB(){
+    pen = penB;
+  }
+  function selectP(){
+    pen = penP;
+  }
+</script>
+</html>
