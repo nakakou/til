@@ -1,0 +1,23 @@
+#摂氏から華氏へ変換するプログラム
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>celsius</title>
+</head>
+<body>
+  <input id="celsius" type="range" min="0" max="100" onchange="convert()"><!--摂氏入力欄-->
+  <p id="result"></p>
+</body>
+<script>
+  function cTof(c){
+     return Math.floor(c * 2 * 0.9 + 32); //かんたんな公式を使って計算し小数点以下を切り捨てる、
+  }
+  function convert(){
+    let c = document.getElementById("celsius").value;
+    let f = cTof(c);
+    var s = "摂氏："+ c + "度　華氏：" + f + "度";
+    document.getElementById("result").textContent = s;
+  }
+</script>
+</html>
