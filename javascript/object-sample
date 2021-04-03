@@ -1,0 +1,67 @@
+#オブジェクト作成の練習
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>object-sample</title>
+</head>
+<body>
+  <h3>ペン</h3>
+  <button onclick="stroke()">書く</button>
+  <p>現在の鉛筆の長さは<span id="length"></span>cm</p>
+  <h3>車</h3>
+  <p>スピード:<span id="speed"></span></p>
+  <p>ガソリンの量:<span id="fuel"></span></p>
+  <button onclick="car.drive(1)">加速</button>
+  <button onclick="car.drive(-1)">減速</button>
+
+</body>
+<script>
+  //ペンのオブジェクト
+  let pen = {
+    //プロパティ
+    color:"red",
+    length:5,
+    //メソッド プロパティと扱いは同じ、値が関数であればメソッド
+    draw: function(){
+      //書くと短くなる
+      //thisはオブジェクト自身を指す
+      this.length -= 0.01;
+    }
+  }
+  function stroke(){
+    pen.draw();
+
+    document.getElementById("length").textContent = pen.length;
+  }
+
+  //車のオブジェクト
+  let car = {
+    fuel: 90,
+    speed: 120,
+    //加速
+    accelerate: function(e){
+      this.speed += e
+      rewite();
+    },
+    //減速
+    decelerate: function(e){
+      this.speed += e
+      rewite();
+    },
+    drive: function(a){
+      this.fuel -= 1
+    if(a === 1){
+      this.accelerate(a);
+    }else if(a === -1){
+      this.decelerate(a);
+    }
+    }
+  }
+  function rewite(){
+    document.getElementById("fuel").textContent = car.fuel;
+  document.getElementById("speed").textContent = car.speed;
+  }
+  
+</script>
+</html>
