@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>object-c-i</title>
+</head>
+<body>
+  <button onclick="add()">追加</button>
+  <ol id="list">
+
+  </ol>
+
+</body>
+<script>
+  let colors = ["pink", "black", "purple", "brown", "red"];
+  let index = 0;
+  function add(){
+    //参照の保持
+    let parent = document.getElementById("list");
+    //要素を作って代入
+    let item = document.createElement("li");
+    item.textContent = colors[index];
+    //cssを追加
+    item.style.color = colors[index];
+    //indexを更新
+    index = ++index % colors.length;
+    //参照を保持している場所に代入した要素を追加
+    parent.appendChild(item);
+  }
+</script>
+</html>
