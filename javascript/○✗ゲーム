@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>マルバツゲーム</title>
+</head>
+<style>
+  #board{
+    background-color:white;
+  }
+  td.cell{
+    background-color: green;
+    width: 60px;
+    height: 60px;
+    /*マルバツを表示するときのスタイル*/
+    text-align: center;
+    font-size: 30px;
+    color: white;
+  }
+</style>
+<body onload="init()">
+  <h3>マルバツゲーム</h3>
+  <table id="board"></table>
+  <h4 id="info">先行</h4>
+</body>
+<script>
+  function init(){
+    let b = document.getElementById("board");
+
+    for( let i = 0; i < 3; i++){
+      let tr = document.createElement("tr");
+
+      for( let j = 0; j < 3; j++ ){
+        let td = document.createElement("td");
+        td.className = "cell";
+        td.id = "cell" + i + j;
+        td.onclick = clicked;
+        tr.appendChild(td);
+      }
+      b.appendChild(tr);
+    }
+  }
+  //押した場所に○✗をつける
+  let count = 0;
+
+  function clicked(e){
+    let clicked = document.getElementById(e.target.id);
+    //クリックするたびにcountを増やす　インクリメントを後ろにつけると代入したあとに加算される、２のあまり算が０である場合○
+    let pice = count++ % 2 === 0? "○":"☓";
+
+    clicked.textContent = pice
+    document.getElementById("info").textContent = pice === "○" ? "後攻":"先攻";
+  }
+</script>
+
+</html>
