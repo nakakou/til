@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>date-object</title>
+</head>
+<body onload="update()">
+  <p>
+    <span id="year"></span>年
+    <span id="month"></span>月
+    <span id="date"></span>日
+    <span id="hour"></span>時
+    <span id="min"></span>分
+    <span id="sec"></span>秒
+    <span id="msec"></span>ミリ
+  </p>
+  <button onclick="update()">更新する</button>
+</body>
+<script>
+  function update(){
+    //Javascriptですでに用意されているオブジェクトを生成
+    let now = new Date();
+    //オブジェクトからメソッドを使用してデータを取得、代入
+    document.getElementById("year").textContent = now.getFullYear();
+    //monthは0から始まるので１を足す
+    document.getElementById("month").textContent = (now.getMonth() + 1)
+    document.getElementById("date").textContent = now.getDate();
+    document.getElementById("hour").textContent = now.getHours();
+    document.getElementById("min").textContent = now.getMinutes();
+    document.getElementById("sec").textContent = now.getSeconds();
+    document.getElementById("msec").textContent = now.getMilliseconds();
+  }
+
+
+</script>
+</html>
