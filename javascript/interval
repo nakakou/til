@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>timersample</title>
+</head>
+<body>
+  <button onclick="startTimer()">スタート</button>
+  <button onclick="stopTimer()">ストップ</button>
+  <h3 id="counter"></h3>
+</body>
+<script>
+  let timerd = NaN,count = 0;
+  function startTimer(){
+    //複数のタイマーが動くのを防ぐためclearIntervalでクリア
+    clearInterval(timerd);
+    //1秒ごとに実行 液晶ディスプレイの画面更新間隔は１秒間に６０回 これより早くすることは無意味
+    //CPUに負荷がかかるため極端に短い間隔にしないこと
+    timerd =setInterval(tick,1000);
+  }
+  function stopTimer(){
+    clearInterval(timerd);
+  }
+  function tick(){
+    count++;
+    document.getElementById("counter").textContent = count;
+  }
+</script>
+</html>
