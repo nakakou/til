@@ -1,0 +1,44 @@
+#10秒で止めるゲーム
+ポイントはスタート時とストップ時にデータオブジェクトを生成し差を求める
+ミリ秒を秒とミリ秒に変換し分ける
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ストップウォッチ</title>
+</head>
+<body>
+  <h2>１０秒ピッタリに止めてね</h2>
+  <p id="time"></p>
+  <button id="start" onclick="start()">スタート</button>
+  <button id="stop" onclick="stop()">ストップ</button>
+  <button id="reset" onclick="init()">リセット</button>
+
+</body>
+<script>
+  let startTime = 0;
+  let stopTime = 0;
+  function start(){
+
+    startTime = new Date();
+
+  }
+  function stop(){
+
+    stopTime = new Date();
+    //時間の差で経過時間を求める
+    //getTime()使った場合　使わなくても勝手にミリ秒にしてくれる
+    let resultTime = stopTime.getTime() - startTime.getTime();
+    let sec = Math.floor(resultTime/1000); //秒にして取得
+    let msec = Math.floor(resultTime%1000); //ミリ秒を取得
+    document.getElementById("time").textContent = "時間は"+sec+"秒"+msec+"でした！";
+
+  }
+  function init(){
+   startTime = 0;
+   stopTime = 0;
+   document.getElementById("time").textContent = ""
+
+  }
+</script>
+</html>
