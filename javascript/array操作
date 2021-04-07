@@ -1,0 +1,73 @@
+＃arrayを操作するプログラム
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>array</title>
+</head>
+<style>
+  ul{
+    font-size: 20px;
+  }
+</style>
+<body>
+  <button onclick="push()">push</button>
+  <button onclick="pop()">pop</button>
+  <button onclick="shift()">shift</button>
+  <button onclick="splice()">splice</button>
+  <ul>
+    <li>配列データ : <span id="data"></span></li>
+    <li>lengthプロパティ : <span id="length"></span></li>
+    <li>戻値 : <span id="rval"></span></li>
+    <li>indexOf(7) : <span id="i0"></span></li>
+    <li>lastIndexOf(7) : <span id="i1"></span></li>
+  </ul>
+</body>
+<script>
+  const data = [1, 8, 5, 7, 2, 6, 7, 4, 0];
+  function push(){
+    //0~9までのランダムな数字
+    let v = Math.floor( Math.random() * 10 );
+    //配列の最後に追加
+    let r = data.push(v);
+
+    update(r);
+  }
+
+  function pop(){
+    //配列の最後を消す
+    let r = data.pop();
+    update(r);
+  }
+
+  function shift(){
+    //配列の先頭の要素を削除
+    let r = data.shift();
+    update(r);
+  }
+
+  function splice(){
+    //splice(index番号,indexからいくつ消すか);
+    let r = data.splice(3, 2);
+    update(r);
+  }
+  function update(rval){
+
+    document.getElementById("data").textContent = data;
+    document.getElementById("length").textContent = data.length;
+    document.getElementById("rval").textContent = rval;
+
+//indexOf(検索対象)先頭から探す
+//lastIndexOf(検索対象)最後から探す
+    let v0 = data.indexOf(7);
+    let v1 = data.lastIndexOf(7);
+
+    document.getElementById("i0").textContent = v0;
+    document.getElementById("i1").textContent = v1;
+
+
+
+  }
+</script>
+</html>
