@@ -1,0 +1,26 @@
+#ランダムな数字を生成するプログラム
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>math-random</title>
+</head>
+<body>
+  <h3>2~5までの乱数を発生させます</h3>
+  <button onclick="random()">クリックして乱数：<span id="value"></span></button>
+</body>
+<script>
+  function random(){
+    //Math.random()は0以上１未満の少数をランダムに
+    //Math.floorは小数点以下を切り捨てる
+    //0~5の場合
+    //0.9 * 6は5.4で切り捨てて5にする
+    //let r = Math.floor(Math.random() * 6);
+    //範囲を指定する場合
+    //2~5の場合　Math.random() * (最大値 - 最小値) + 最小値
+    let r = Math.floor(Math.random() * (6 - 2) + 2);
+    document.getElementById("value").textContent = r;
+  }
+</script>
+</html>
