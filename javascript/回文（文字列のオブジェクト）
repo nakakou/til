@@ -1,0 +1,52 @@
+#
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>kaibun-sample</title>
+</head>
+<body>
+  <button onclick="start()">スタート</button>
+  <h2 id="str"></h2>
+  <h2 id="jpn"></h2>
+</body>
+<script>
+  let data = [
+    {str:"ウタウタウ", jpn:"歌歌う"},
+    {str:"ナツマデマツナ", jpn:"夏まで待つな"},
+    {str:"タシカニカシタ", jpn:"確かに貸した"},
+    {str:"ノウカモイモカウノ", jpn:"農家もイモ買うの"},
+    {str:"タシカニコノヤオヤノコニカシタ", jpn:"確かにこの八百屋の子に貸した"},
+    {str:"カルイキビンナコネコナンビキイルカ", jpn:"軽い機敏な子猫何匹いるか"},
+    {str:"ナガキヨノトオノネムリノミナメザメ、ナミノリフネノオトヨキカナ", jpn:"長き世の遠の眠りの皆目覚め、波乗り舟の音の良きかな"}
+  ];
+
+//変数をまとめて複数宣言することもできる
+  let timerld, index = 0, pos = 0;
+
+  function start(){
+    //初期化
+    pos = 0;
+    document.getElementById("jpn").textContent = "";
+console.log(index);
+//スタートを押すたびにindexに１を足す
+    index = (index + 1) % data.length;
+    //タイマーが動き続けるため一度タイマーをリセット
+    clearInterval(timerld);
+    //0.2秒ごとに動かす
+    timerld = setInterval(tick, 200);
+    //
+    function tick(){
+      //文字列を取り出す
+      let str = data[index].str;
+      //substr 取り出しはじめる位置を指定、ponのいちまで取得　一文字づつ足しているように見せる
+      document.getElementById("str").textContent = str.substr(0,pos);
+      //posの方がstrの文字数より大きければ　＝　文字数すべてが表示されたあと
+      if(++pos > str.length){
+        clearInterval(timerld);
+        document.getElementById("jpn").textContent = data[index].jpn;
+      }
+    }
+  }
+</script>
+</html>
