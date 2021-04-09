@@ -1,1 +1,38 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>prototype-sample</title>
+</head>
+<body>
+  <h2>プロトタイプ</h2>
+  <button onclick="random()">ランダム</button>
+  <p id="result"></p>
+</body>
+<script>
+  //配列Arrayのコンストラクタのプロトタイプにshuffleというメソッドを追加している
+  Array.prototype.shuffle = function(){
+    //配列の長さ
+    let i = this.length;
+    while(i){
+      let j = Math.floor(Math.random() * i);
+      let t = this[--i];
+      console.log(t);
+      this[i] = this[j];
+      this[j] = t;
+
+    }
+
+    return this;
+
+  }
+  //イベントのshuffle
+  function random(){
+    //cardsの暗黙のprototype参照先にはshuffle()メソッドがある
+    let cards = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
+    cards.shuffle();
+    document.getElementById("result").innerText = cards.join(",");
+  }
+</script>
+</html>
