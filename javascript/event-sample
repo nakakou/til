@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>event</title>
+</head>
+<body>
+  <button class="target">はい</button>
+  <input type="range" class="target"/>
+  <p class="target">パラグラフ
+  </p>
+  <h3>console.logで出力します。</h3>
+</body>
+<script>
+  //読み込まれたら
+  window.onload = function(){
+    //クラス名を持つ要素をまとめて指定
+   const nodes = document.getElementsByClassName("target");
+   //複数の要素に色々なイベントを設定
+   for(let i = 0; i < nodes.length; i++){
+     nodes[i].onclick = myhandler;
+     nodes[i].onmousedown = myhandler;
+     nodes[i].onmouseup = myhandler;
+     nodes[i].onchange = myhandler;
+     nodes[i].onfocus = myhandler;
+   }
+
+  }
+  function myhandler(e){
+    console.log(e.type + ": tagName=" + e.srcElement.tagName);
+    //clientX/Yブラウザの領域
+    //screenX/Yスクリーンの領域
+    //offsetX/Y自要素の領域
+    //pageX/Yページの領域
+    //どれも左上が原点
+    console.log("clientX=" + e.clientX + "screenX=" + e.screenX + "pageX=" + e.pageX);
+
+  }
+</script>
+</html>
