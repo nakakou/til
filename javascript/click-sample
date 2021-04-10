@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>click</title>
+</head>
+<body>
+  <button id="yes">はい</button>
+  <button id="no">いいえ</button>
+  <h2 id="status"></h2>
+</body>
+<script>
+  window.onload = function(){
+    //イベントの登録　両方に同じイベントを設定
+    document.getElementById("yes").onclick = clickhandler;
+    document.getElementById("no").onclick = clickhandler;
+  }
+  function clickhandler(e){
+    //eはクリックされた要素　ブラウザが引数をセットしてくれる
+    //targetプロパティのtextContentを参照してどのボタンを押したか区別している
+    document.getElementById("status").textContent = e.target.textContent + "を選びました"
+  }
+</script>
+</html>
