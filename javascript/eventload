@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EventLoad</title>
+</head>
+<body>
+  <!--<body onload="init()">としても同じような動きになる-->
+  <h1 id="title">Hello</h1>
+  <h2 id="sub-title"></h2>
+</body>
+<script>
+  //windowオブジェクトにinitという関数を登録
+  //文章が読み終わったら呼び出される
+  window.onload = init;
+  //文字列を代入して更新する関数
+  function init(){
+    const h = document.getElementById("title");
+    h.textContent = "こんにちは、はじめまして";
+    console.log("called: window.onload");
+  }
+  /*
+  無名関数版
+  window.onload = function(){
+    const h = document.getElementById("title");
+    h.textContent = "こんにちは、はじめまして";
+  }
+  */
+  
+  //DOMContentLoadedイベントにハンドラを登録する方法
+//DOMContentLoadedはHTMLの構造の解釈が完了したら発生
+  document.addEventListener("DOMContentLoaded", function(){
+    const h = document.getElementById("sub-title");
+    h.textContent = "おげんきですか？";
+    console.log("called:DOMContentLoaded")
+  });
+  //onloadは画像の読み込みなどが完了してから呼び出される
+  //画像を読み込む前に処理したい場合DOMContentLoadedを使用する
+</script>
+</html>
