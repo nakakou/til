@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>カード当て</title>
+</head>
+<style>
+  .card{
+    width: 50px;
+    height: 70px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 26px;
+    background-color: white;
+    box-shadow: rgb(128, 128, 128)5px 5px;
+  }
+</style>
+<body>
+  <div id="deck">
+    <table>
+      <tr>
+        <td class="card" id="card0"></td>
+        <td class="card" id="card1"></td>
+        <td class="card" id="card2"></td>
+      </tr>
+    </table>
+    <button id="shuffle">混ぜる</button>
+  </div>
+</body>
+<script>
+  //0~2までのランダムな数字
+  let strike = Math.floor(Math.random() * 3);
+  //イベントハンドラの登録
+  window.onload = function (){
+    document.getElementById("card0").onclick = myhandler0;
+    document.getElementById("card1").onclick = myhandler1;
+    document.getElementById("card2").onclick = myhandler2;
+    document.getElementById("shuffle").onclick = shuffle;
+  }
+  //strikeの数と比較して同じであれば○を入れる
+  function myhandler0(e){
+    if(strike === 0){
+      document.getElementById("card0").textContent = "○";
+    }
+  }
+  function myhandler1(e){
+    if(strike === 1){
+      document.getElementById("card1").textContent = "○";
+    }
+  }
+  function myhandler2(e){
+    if(strike === 2){
+      document.getElementById("card2").textContent = "○";
+    }
+  }
+  //混ぜるボタンを押したらランダムな数字を入れ直す、テキストを空にする
+  function shuffle(e){
+    strike = Math.floor(Math.random() * 3);
+    document.getElementById("card0").textContent = "";
+    document.getElementById("card1").textContent = "";
+    document.getElementById("card2").textContent = "";
+  }
+</script>
+</html>
