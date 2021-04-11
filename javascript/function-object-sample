@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>関数オブジェクトの配列操作</title>
+</head>
+<body>
+  <h2>パターン１</h2>
+  <p id="p1">計算結果が入る</p>
+  <button onclick="p1res()">計算する</button>
+
+  <h2>パターン２</h2>
+  <p id="p2">計算結果が入る</p>
+  <button onclick="p2res()">計算する</button>
+
+  <h2>パターン３</h2>
+  <p id="p3">計算結果が入る</p>
+  <button onclick="p3res()">計算する</button>
+
+  <h2>偶数を取り出す</h2>
+  <p id="p4">計算結果が入る</p>
+  <button onclick="p4res()">計算する</button>
+
+  <h2>偶数を取り出す ver2</h2>
+  <p id="p5">計算結果が入る</p>
+  <button onclick="p5res()">計算する</button>
+
+</body>
+<script>
+  //パターン１
+  const data = [1, 3, 7, 9, 10, 34, 7, 4, 8, 12];
+  let total = 0;
+  function p1res(){
+    total = 0;
+    for (let i = 0; i < data.length; i++){
+    total += data[i];
+  }
+  document.getElementById("p1").textContent = total;
+  }
+  //パターン２
+  function p2res(){
+    total = 1;
+    //関数オブジェクト
+    //forEachはArrayオブジェクトのメソッドの一つ
+    //配列の要素を順番に取り出し、その値を引数として関数オブジェクトを実行している
+    data.forEach(function(v){
+      //一つずつかけていく場合
+      total *= v;
+      });
+    document.getElementById("p2").textContent = total;
+  }
+  //パターン３
+  //関数オブジェクトを変数に格納してforEachにわたす
+
+  function p3res(){
+    total = 0;
+    let adder = function(v){total += v};
+    data.forEach(adder);
+    document.getElementById("p3").textContent = total;
+  }
+
+  //パターン４
+  //偶数のみを取り出す
+  //for文で配列の要素を一つずつ取り出しif文で判定してresultの配列の最後に追加する
+  function p4res(){
+    let result = [];
+    for (let i = 0; i < data.length; i++){
+      if(data[i] % 2 === 0){
+        result.push(data[i]);
+      }
+    }
+    document.getElementById("p4").textContent = result;
+  }
+
+  //パターン５
+  //dataはArrayオブジェクトなのでfilterメソッドが使える
+  //filterは要素を一つずつ計算してtrueを返した要素のみを含む配列を返す
+  function p5res(){
+    let result = data.filter(function(v){
+      return v % 2 === 0
+      });
+    document.getElementById("p5").textContent = result;
+  }
+
+</script>
+</html>
