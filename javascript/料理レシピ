@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>recipi-plactice</title>
+</head>
+<style>
+  h2 {
+    text-align: center;
+  }
+  h3{
+    color: green;
+    text-shadow: 2px 2px 5px;
+  }
+  p {
+    font-size: 20px;
+  }
+  td{
+    padding: 10px;
+    background-color: #f0f0f0;
+    box-shadow: rgba(0, 0, 0, 0.4) 10px 10px 20px;
+    border-radius: 10px;
+  }
+
+</style>
+<body>
+  <h2>チャーハン</h2>
+  <p>
+    <input type="range" id="setNum" min="1" max="5" value="1">
+    <span id="num">1</span><span>人前</span>
+  </p>
+  <table>
+    <tr>
+      <td rowspan="2">
+        <img src="yakimeshi.jpg" alt="yakimeshi">
+      </td>
+      <td>
+        <h3>材料</h3>
+        <ul>
+          <li>ご飯 <span id="i0">100</span>g</li>
+          <li>たまねぎ <span id="i1">30</span>g</li>
+          <li>人参 <span id="i2">15</span>g</li>
+          <li>焼豚 <span id="i3">30</span>g</li>
+          <li>たまご <span id="i4">1</span>個</li>
+        </ul>
+      </td>
+      
+    </tr>
+    <tr>
+      <h3>作り方</h3>
+      <ol>
+        <li>人参と玉ねぎ、焼豚をみじん切りにします。<br>
+        たまごを混ぜておきます</li>
+        <li>フライパンに油を入れて温めます</li>
+        <li>たまご、ご飯、焼豚、野菜の順で炒めます</li>
+        <li>塩コショウ、醤油で味を整えます</li>
+        <li>盛り付けてできあがり</li>
+      </ol>
+    </tr>
+  </table>
+</body>
+<script>
+  //ページの読み込みが完了したら
+  window.onload = function (){
+    //setNumの値が変わったら実行するイベント(setNum)を登録
+    document.getElementById("setNum").onchange = setNum;
+  }
+  function setNum(e){
+    let num = parseInt(e.target.value);
+    //htmlのid,setNumの値と材料をかける
+    let v0 = 100*num, v1 = 30*num, v2 = 15*num, v3 = 30*num, v4 = num;
+    //htmlの材料の量を書き換える
+    document.getElementById("i0").textContent = v0;
+    document.getElementById("i1").textContent = v1;
+    document.getElementById("i2").textContent = v2;
+    document.getElementById("i3").textContent = v3;
+    document.getElementById("i4").textContent = v4;
+    document.getElementById("num").textContent = num;
+  }
+</script>
+</html>
