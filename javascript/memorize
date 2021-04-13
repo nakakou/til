@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>暗記</title>
+</head>
+<style>
+  h1{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+  #english{
+    border:1px solid blue;
+    width: 600px;
+    margin: 0 auto;
+  }
+  span.word{
+    color: red;
+    padding-left: 30px;
+  }
+</style>
+<body>
+  <h1>英語</h1>
+  <p>赤い線をクリックすると答えが出ます</p>
+  <table id="english">
+    <tr><td><span class="word">apple</span></td><td>りんご</td></tr>
+    <tr><td><span class="word">orange</span></td><td>オレンジ</td></tr>
+    <tr><td><span class="word">rice</span></td><td>ごはん</td></tr>
+
+  </table>
+</body>
+<script>
+  //ページが表示されたら実行
+  window.onload = init;
+  function init(){
+    //引数に指定した要素をすべて取得する
+    let words = document.querySelectorAll("span.word");
+    for (let i = 0; i < words.length; i++){
+      let w = words[i];
+      //w.answerに答えを格納しておく（保持している）
+      w.answer = w.textContent;
+      //答えを置き換える
+      w.textContent = "_______";
+      //クリックイベントを設定する
+      w.onclick = function(e){
+        //クリックされた要素の答えを格納
+        e.target.textContent = e.target.answer;
+      }
+    }
+  }
+</script>
+</html>
