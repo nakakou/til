@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas-context</title>
+</head>
+<body onload="init()">
+  <h2>canvas要素で図形を描く</h2>
+  <!--1.HTMLでcanvas要素を定義　width,heightの範囲内で描画する-->
+  <canvas id="canvas" width="700" height="400"></canvas>
+</body>
+<script>
+  let ctx;
+  function init(){
+    //２.canvas要素への参照を取得
+    let canvas = document.getElementById("canvas");
+    //３.参照からコンテキストを取得
+    //現在は２ｄしか指定できない
+    ctx = canvas.getContext("2d");
+
+    /*
+    コンテキストの設定
+    コンテキストの意味は、前後関係、背景、文脈などの意味
+    */
+    //４．コンテキストに色、線の太さなどを設定
+    ctx.strokeStyle = "FF0000";//線、輪郭の色
+    ctx.fillStyle = "#00FF00";//塗りつぶす色
+    ctx.lineWidth = 10;//先の幅
+    ctx.lineCap = "round";//線の終端の形状,butt,round,squareの値が使用可能
+    ctx.shadowColor = "#000000";//影の色
+    ctx.shadowBlur = 20;//影に適用するぼかす範囲
+
+    //５．描画を行う
+    //線を引く（パスと呼ばれる）
+    ctx.beginPath();//パスの初期化
+    //１つ目の図形
+    ctx.moveTo(100, 100);//筆を下ろす感覚　始点
+    ctx.lineTo(180, 250);//筆を動かす
+    ctx.stroke();//ここで描画が行われる
+    /*
+    ２つ目の図形
+    矩形を塗りつぶす　（すべての角が直角の、四辺形。長方形。）
+    */
+    ctx.fillRect(300, 100, 100, 150);
+    /*
+    ３つ目の図形
+    矩形を描く
+    */
+    ctx.strokeRect(500, 100, 100, 150);
+  }
+</script>
+</html>
